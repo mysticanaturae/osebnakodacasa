@@ -123,7 +123,6 @@ function showPortalSequence(callback){
 
     portal.classList.add("show");
 
-    // sound (safe play)
     if(sound){
         sound.currentTime = 0;
         sound.play().catch(()=>{});
@@ -132,38 +131,19 @@ function showPortalSequence(callback){
     const text = portal.querySelector(".portal-text");
 
     setTimeout(() => {
-    portal.querySelector(".portal-text").innerText =
-    "Povezujem tvojo rojstno frekvenco...";
-}, 700);
+        text.innerText = "Povezujem tvojo rojstno frekvenco...";
+    }, 700);
 
-setTimeout(() => {
-    portal.querySelector(".portal-text").innerText =
-    "Odpiram vrata Maya Kode Časa...";
-}, 1400);
+    setTimeout(() => {
+        text.innerText = "Odpiram vrata Maya Kode Časa...";
+    }, 1400);
 
-setTimeout(() => {
-    portal.querySelector(".portal-text").innerText =
-    "Tvoj KIN se razkriva...";
-}, 2100);
+    setTimeout(() => {
+        text.innerText = "Tvoj KIN se razkriva...";
+    }, 2100);
 
-setTimeout(() => {
-    portal.classList.remove("show");
-    if(callback) callback();
-}, 2800);
-
-
-/* SERVICE WORKER */
-
-if("serviceWorker" in navigator){
-
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker
-            .register("sw.js")
-            .then(() => {
-                console.log("Service Worker aktiviran");
-            });
-
-    });
-
+    setTimeout(() => {
+        portal.classList.remove("show");
+        if(callback) callback();
+    }, 2800);
 }

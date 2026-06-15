@@ -60,59 +60,50 @@ if (
     return;
 }
 
-// nadaljevanje izračuna
-saveEmail(email);
+console.log({ tzolkinNumbers, tzolkinSignDescriptions });
 
-const kin = calculateTzolkinKin(birthDate);
+    // 🔮 PORTAL START
+    showPortal();
 
-const tone = ((kin - 1) % 13) + 1;
-const sign = ((kin - 1) % 20) + 1;
+    setTimeout(() => {
 
-const toneText = tzolkinNumbers[tone - 1];
-const toneImg = tzolkinNumberImages[tone - 1];
+        const kin = calculateTzolkinKin(birthDate);
+        const tone = ((kin - 1) % 13) + 1;
+        const sign = ((kin - 1) % 20) + 1;
 
-const signName = tzolkinSigns[sign - 1];
-const signImg = tzolkinSignImages[sign - 1];
-const signDescription = tzolkinSignDescriptions[sign - 1];
+        const toneText = tzolkinNumbers[tone - 1];
+        const toneImg = tzolkinNumberImages[tone - 1];
 
-resultDiv.innerHTML = `
-<div class="reading-card">
+        const signName = tzolkinSigns[sign - 1];
+        const signImg = tzolkinSignImages[sign - 1];
+        const signDescription = tzolkinSignDescriptions[sign - 1];
 
-    <div class="reading-header">
-        <span class="reading-label">OSEBNA KODA ČASA™</span>
-        <h2>${fullName}</h2>
-    </div>
+        resultDiv.innerHTML = `
+        <div class="reading-card">
+            <div class="reading-header">
+                <span class="reading-label">OSEBNA KODA ČASA™</span>
+                <h2>${fullName}</h2>
+            </div>
 
-    <div class="kin-display">
-        KIN ${kin}
-    </div>
+            <div class="kin-display">KIN ${kin}</div>
 
-    <img src="${toneImg}" class="number-img">
-    <p class="frequency">${toneText}</p>
+            <img src="${toneImg}" class="number-img">
+            <p class="frequency">${toneText}</p>
 
-    <img src="${signImg}" class="sign-img">
+            <img src="${signImg}" class="sign-img">
 
-    <h3>${signName}</h3>
+            <h3>${signName}</h3>
 
-    <p class="reading-text">
-        ${signDescription}
-    </p>
+            <p class="reading-text">${signDescription}</p>
+        </div>
+        `;
 
-</div>
-`;
+        resultDiv.classList.add("show");
+        resultDiv.scrollIntoView({ behavior: "smooth" });
 
-resultDiv.classList.add("show");
+        hidePortal();
 
-resultDiv.scrollIntoView({ behavior: "smooth" });
-}
-
-resultDiv.classList.add("show");
-
-resultDiv.scrollIntoView({
-    behavior:"smooth"
-});
-```
-
+    }, 1800);
 }
 
 function saveEmail(email){
@@ -144,6 +135,14 @@ hero.style.backgroundPositionY =
 ```
 
 });
+
+function showPortal(){
+    document.getElementById("portal").classList.add("show");
+}
+
+function hidePortal(){
+    document.getElementById("portal").classList.remove("show");
+}
 
 /* SERVICE WORKER */
 

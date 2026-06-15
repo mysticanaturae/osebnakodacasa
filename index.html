@@ -108,44 +108,25 @@ Brezplačen izračun
 Vnesi svoje podatke in odkrij svoj KIN.
 </p>
 
-<input
-type="text"
-id="fullName"
-placeholder="Ime in priimek"
-autocomplete="name">
+<input type="text" id="fullName" placeholder="Ime in priimek" autocomplete="name">
 
-<input
-type="date"
-id="birthDate"
-autocomplete="bday">
+<input type="date" id="birthDate" autocomplete="bday">
 
-<input
-type="email"
-id="email"
-placeholder="E-mail naslov"
-autocomplete="email">
+<input type="email" id="email" placeholder="E-mail naslov" autocomplete="email">
 
 <label class="gdpr">
-
-<input
-type="checkbox"
-id="gdprConsent">
-
-Strinjam se s pogoji uporabe in obdelavo podatkov.
-
+    <input type="checkbox" id="gdprConsent">
+    Strinjam se s pogoji uporabe in obdelavo podatkov.
 </label>
 
 <button type="button" onclick="calculateSoulFrequency()">
-Izračunaj mojo kodo
+    Izračunaj mojo kodo
 </button>
 
+<div id="portal" class="portal">
+    <div class="portal-core"></div>
+    <p>Odpiram dimenzijo tvoje kode časa...</p>
 </div>
-
-</section>
-
-<!-- REZULTAT -->
-
-<section class="result-section">
 
 <div id="result"></div>
 

@@ -656,3 +656,157 @@ footer{
     0%,100% { opacity: 0.4; }
     50%     { opacity: 1; }
 }
+
+/* =========================
+   COSMIC STARFIELD
+========================= */
+
+.stars{
+    position:absolute;
+    inset:0;
+
+    background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px);
+
+    background-size:
+    120px 120px,
+    200px 200px;
+
+    animation:
+    starsMove 20s linear infinite;
+
+    opacity:.4;
+}
+
+/* MAYA GLYPH */
+
+.portal-glyph{
+
+    position:absolute;
+
+    font-size:70px;
+
+    color:#d8b56a;
+
+    text-shadow:
+        0 0 20px rgba(216,181,106,.8),
+        0 0 60px rgba(216,181,106,.5);
+
+    animation:
+        glyphPulse 2s ease-in-out infinite;
+}
+
+/* KOZMIČNI OBROČ */
+
+.portal-core{
+
+    position:relative;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(216,181,106,.8);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,181,106,.25),
+            rgba(138,43,226,.15),
+            transparent
+        );
+
+    box-shadow:
+        0 0 50px rgba(216,181,106,.35),
+        0 0 140px rgba(138,43,226,.35);
+
+    animation:
+        portalSpin 4s linear infinite,
+        portalPulse 2.5s ease-in-out infinite,
+        dimensionalExpand 2s ease forwards;
+}
+
+/* STARS */
+
+@keyframes starsMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(120px);
+    }
+}
+
+/* GLYPH */
+
+@keyframes glyphPulse{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.8;
+    }
+
+    50%{
+        transform:scale(1.2);
+        opacity:1;
+    }
+}
+
+/* SPIN */
+
+@keyframes portalSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* PULSE */
+
+@keyframes portalPulse{
+
+    0%,100%{
+        box-shadow:
+        0 0 40px rgba(216,181,106,.3),
+        0 0 120px rgba(138,43,226,.3);
+    }
+
+    50%{
+        box-shadow:
+        0 0 90px rgba(216,181,106,.8),
+        0 0 200px rgba(138,43,226,.7);
+    }
+}
+
+/* DIMENZIJSKI PREHOD */
+
+@keyframes dimensionalExpand{
+
+    0%{
+        transform:scale(.4);
+        opacity:0;
+    }
+
+    40%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    80%{
+        transform:scale(1.7);
+    }
+
+    100%{
+        transform:scale(2.5);
+        opacity:0;
+        filter:blur(12px);
+    }
+}

@@ -132,18 +132,24 @@ function showPortalSequence(callback){
     const text = portal.querySelector(".portal-text");
 
     setTimeout(() => {
-        if(text) text.innerText = "Povezujem tvojo frekvenco...";
-    }, 700);
+    portal.querySelector(".portal-text").innerText =
+    "Povezujem tvojo rojstno frekvenco...";
+}, 700);
 
-    setTimeout(() => {
-        if(text) text.innerText = "Koda Časa se aktivira...";
-    }, 1400);
+setTimeout(() => {
+    portal.querySelector(".portal-text").innerText =
+    "Odpiram vrata Maya Kode Časa...";
+}, 1400);
 
-    setTimeout(() => {
-        portal.classList.remove("show");
-        if(callback) callback();
-    }, 1800);
-}
+setTimeout(() => {
+    portal.querySelector(".portal-text").innerText =
+    "Tvoj KIN se razkriva...";
+}, 2100);
+
+setTimeout(() => {
+    portal.classList.remove("show");
+    if(callback) callback();
+}, 2800);
 
 
 /* SERVICE WORKER */

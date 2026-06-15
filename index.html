@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Osebna Koda Časa™</title>
+
+<meta name="description" content="Izračunaj svojo Osebno Kodo Časa™ po tradicionalnem Maya Tzolkin koledarju.">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0f0f0f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<span class="eyebrow">
+Maya Kozmovizija • Tradicionalni Tzolkin
+</span>
+
+<h1>
+Osebna Koda Časa™
+</h1>
+
+<p class="hero-text">
+
+Tvoja rojstna frekvenca ni naključje.
+
+Vsak človek se rodi v določenem trenutku kozmičnega cikla.
+
+Tvoj KIN razkriva ton ustvarjanja, znamenje duše in energijo, s katero si prišel na Zemljo.
+
+</p>
+
+<a href="#calculator" class="hero-button">
+Izračunaj svojo kodo
+</a>
+
+</div>
+
+</section>
+
+<!-- UVOD -->
+
+<section class="intro">
+
+<div class="container">
+
+<h2>
+Kaj je Osebna Koda Časa™?
+</h2>
+
+<p>
+
+Starodavni Maya varuhi časa niso merili časa v urah.
+
+Merili so ga v energijah.
+
+Vsak dan nosi svojo frekvenco.
+
+Vsak človek se rodi v določeni kombinaciji tona in znamenja.
+
+To ustvarja njegov osebni KIN.
+
+</p>
+
+<p>
+
+Osebna Koda Časa™ je sodoben prevod tega starodavnega znanja.
+
+Na podlagi rojstnega datuma izračuna tvojo osnovno energijsko frekvenco.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- KALKULATOR -->
+
+<section id="calculator" class="calculator-section">
+
+<div class="calculator-card">
+
+<h2>
+Brezplačen izračun
+</h2>
+
+<p class="subtitle">
+
+Vnesi svoje podatke in odkrij svoj KIN.
+
+</p>
+
+<input
+type="text"
+id="fullName"
+placeholder="Ime in priimek">
+
+<input
+type="date"
+id="birthDate">
+
+<input
+type="email"
+id="email"
+placeholder="E-mail naslov">
+
+<label class="gdpr">
+
+<input
+type="checkbox"
+id="gdprConsent">
+
+Strinjam se s pogoji uporabe in obdelavo podatkov.
+
+</label>
+
+<button onclick="calculateSoulFrequency()">
+Izračunaj mojo kodo
+</button>
+
+</div>
+
+</section>
+
+<!-- REZULTAT -->
+
+<section class="result-section">
+
+<div id="result"></div>
+
+</section>
+
+<!-- O KNJIGI -->
+
+<section class="book-section">
+
+<div class="container">
+
+<h2>
+Želiš več kot le osnovni izračun?
+</h2>
+
+<p>
+
+Brezplačni izračun pokaže tvojo osnovno frekvenco.
+
+Personalizirana knjiga Osebna Koda Časa™ pa razkrije:
+
+</p>
+
+<ul>
+
+<li>✓ Tvoj Maya KIN</li>
+
+<li>✓ Ton duše</li>
+
+<li>✓ Znamenje duše</li>
+
+<li>✓ Darove in potenciale</li>
+
+<li>✓ Izzive in lekcije</li>
+
+<li>✓ Povezavo z življenjskim poslanstvom</li>
+
+<li>✓ Kozmične cikle časa</li>
+
+</ul>
+
+<a
+href="https://blinkita.si"
+target="_blank"
+class="gold-button">
+
+Naroči personalizirano knjigo
+
+</a>
+
+</div>
+
+</section>
+
+<!-- BLINKITA -->
+
+<section class="author">
+
+<div class="container">
+
+<h2>
+Blinkita Thomas
+</h2>
+
+<p>
+
+Že več kot 23 let raziskujem Maya Kozmovizijo, Tzolkin koledar in starodavne sisteme časa.
+
+Leta 2011 sem bila posvečena v Saq I'x s strani Maya varuha časa Tata Pedra Cruza v Gvatemali.
+
+Danes živim v Belizeju in nadaljujem delo z ljudmi po vsem svetu.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="final-cta">
+
+<div class="container">
+
+<h2>
+Čas ni ura.
+</h2>
+
+<h3>
+Čas je zavest.
+</h3>
+
+<a
+href="#calculator"
+class="hero-button">
+
+Izračunaj svojo Osebno Kodo Časa™
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Blinkita Thomas • Osebna Koda Časa™
+
+</footer>
+
+<script src="tzolkin-data.js"></script>
+<script src="tzolkin.js"></script>
+
+<script>
+
+if ("serviceWorker" in navigator) {
+window.addEventListener("load", () => {
+navigator.serviceWorker.register("sw.js");
+});
+}
+
+</script>
+
+</body>
+</html>

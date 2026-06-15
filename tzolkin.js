@@ -5,67 +5,55 @@ CORE ENGINE
 
 function calculateTzolkinKin(dateInput){
 
-```
-const dateParts = dateInput.split("-");
+    const dateParts = dateInput.split("-");
 
-const date = new Date(Date.UTC(
-    parseInt(dateParts[0]),
-    parseInt(dateParts[1]) - 1,
-    parseInt(dateParts[2])
-));
+    const date = new Date(Date.UTC(
+        parseInt(dateParts[0]),
+        parseInt(dateParts[1]) - 1,
+        parseInt(dateParts[2])
+    ));
 
-const refDate = new Date(Date.UTC(1800,0,1));
+    const refDate = new Date(Date.UTC(1800,0,1));
+    const refKin = 114;
+    const msPerDay = 1000 * 60 * 60 * 24;
 
-const refKin = 114;
+    const daysSince =
+        Math.floor((date - refDate) / msPerDay);
 
-const msPerDay = 1000 * 60 * 60 * 24;
+    const kin =
+        ((refKin - 1 + daysSince) % 260 + 260) % 260 + 1;
 
-const daysSince =
-    Math.floor((date - refDate) / msPerDay);
-
-const kin =
-    ((refKin - 1 + daysSince) % 260 + 260) % 260 + 1;
-
-return kin;
-```
-
+    return kin;
 }
 
-function calculateSoulFrequency() {
 
-const fullName =
-    document.getElementById("fullName").value.trim();
+function calculateSoulFrequency(){
 
-const birthDate =
-    document.getElementById("birthDate").value;
+    const fullName =
+        document.getElementById("fullName").value.trim();
 
-const email =
-    document.getElementById("email").value.trim();
+    const birthDate =
+        document.getElementById("birthDate").value;
 
-const gdpr =
-    document.getElementById("gdprConsent").checked;
+    const email =
+        document.getElementById("email").value.trim();
 
-const resultDiv =
-    document.getElementById("result");
+    const gdpr =
+        document.getElementById("gdprConsent").checked;
 
-console.log({ tzolkinNumbers, tzolkinSignDescriptions });
+    const resultDiv =
+        document.getElementById("result");
 
-if (
-    !fullName ||
-    !birthDate ||
-    !email ||
-    !gdpr
-) {
-    alert("Prosim izpolni vsa polja in potrdi soglasje.");
-    return;
-}
+    if(!fullName || !birthDate || !email || !gdpr){
+        alert("Prosim izpolni vsa polja in potrdi soglasje.");
+        return;
+    }
 
-console.log({ tzolkinNumbers, tzolkinSignDescriptions });
+    // email capture
+    saveEmail(email);
 
-    // 🔮 PORTAL START
-    showPortal();
-
-    setTimeout(() => {
+    // PORTAL START
+    showPortalSequence(() => {
 
         const kin = calculateTzolkinKin(birthDate);
         const tone = ((kin - 1) % 13) + 1;
@@ -79,89 +67,97 @@ console.log({ tzolkinNumbers, tzolkinSignDescriptions });
         const signDescription = tzolkinSignDescriptions[sign - 1];
 
         resultDiv.innerHTML = `
-        <div class="reading-card">
-            <div class="reading-header">
-                <span class="reading-label">OSEBNA KODA ČASA™</span>
-                <h2>${fullName}</h2>
+            <div class="reading-card">
+                <div class="reading-header">
+                    <span class="reading-label">OSEBNA KODA ČASA™</span>
+                    <h2>${fullName}</h2>
+                </div>
+
+                <div class="kin-display">KIN ${kin}</div>
+
+                <img src="${toneImg}" class="number-img">
+                <p class="frequency">${toneText}</p>
+
+                <img src="${signImg}" class="sign-img">
+
+                <h3>${signName}</h3>
+
+                <p class="reading-text">${signDescription}</p>
             </div>
-
-            <div class="kin-display">KIN ${kin}</div>
-
-            <img src="${toneImg}" class="number-img">
-            <p class="frequency">${toneText}</p>
-
-            <img src="${signImg}" class="sign-img">
-
-            <h3>${signName}</h3>
-
-            <p class="reading-text">${signDescription}</p>
-        </div>
         `;
 
         resultDiv.classList.add("show");
-        resultDiv.scrollIntoView({ behavior: "smooth" });
 
-        hidePortal();
-
-    }, 1800);
+        resultDiv.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
 }
+
 
 function saveEmail(email){
-
-```
-console.log(
-    "Email captured:",
-    email
-);
-```
-
+    console.log("Email captured:", email);
 }
+
 
 /* HERO PARALLAX */
 
 window.addEventListener("scroll", () => {
 
-```
-const hero =
-    document.querySelector(".hero");
+    const hero = document.querySelector(".hero");
+    if(!hero) return;
 
-if(!hero) return;
-
-const offset =
-    window.pageYOffset;
-
-hero.style.backgroundPositionY =
-    offset * 0.4 + "px";
-```
-
+    const offset = window.pageYOffset;
+    hero.style.backgroundPositionY = offset * 0.4 + "px";
 });
 
-function showPortal(){
-    document.getElementById("portal").classList.add("show");
+
+/* PORTAL ANIMATION */
+
+function showPortalSequence(callback){
+
+    const portal = document.getElementById("portal");
+    const sound = document.getElementById("portalSound");
+
+    if(!portal) return;
+
+    portal.classList.add("show");
+
+    // sound (safe play)
+    if(sound){
+        sound.currentTime = 0;
+        sound.play().catch(()=>{});
+    }
+
+    const text = portal.querySelector(".portal-text");
+
+    setTimeout(() => {
+        if(text) text.innerText = "Povezujem tvojo frekvenco...";
+    }, 700);
+
+    setTimeout(() => {
+        if(text) text.innerText = "Koda Časa se aktivira...";
+    }, 1400);
+
+    setTimeout(() => {
+        portal.classList.remove("show");
+        if(callback) callback();
+    }, 1800);
 }
 
-function hidePortal(){
-    document.getElementById("portal").classList.remove("show");
-}
 
 /* SERVICE WORKER */
 
 if("serviceWorker" in navigator){
 
-```
-window.addEventListener("load", () => {
+    window.addEventListener("load", () => {
 
-    navigator.serviceWorker
-        .register("sw.js")
-        .then(() => {
+        navigator.serviceWorker
+            .register("sw.js")
+            .then(() => {
+                console.log("Service Worker aktiviran");
+            });
 
-            console.log(
-                "Service Worker aktiviran"
-            );
-
-        });
-
-});
-```
+    });
 
 }

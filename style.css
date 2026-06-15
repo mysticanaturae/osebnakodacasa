@@ -315,8 +315,7 @@ section{
 }
 
 .calculator-card button:hover{
-
-    transform:translateY(-2px);
+    transform:translateY(-2px) scale(1.02);
 }
 
 .gdpr{
@@ -554,4 +553,106 @@ footer{
     .number-img{
         width:90px;
     }
+}
+
+/* =========================
+   PORTAL — COSMIC DIMENSION GATE
+========================= */
+
+.portal{
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(
+        circle at center,
+        rgba(138,43,226,0.25),
+        rgba(0,0,0,0.95) 60%,
+        #000
+    );
+
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+
+    transition: opacity 0.4s ease;
+}
+
+/* AKTIVACIJA */
+.portal.show{
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* KOZMICKO JEDRO */
+.portal-core{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+
+    border: 2px solid rgba(216,181,106,0.85);
+
+    box-shadow:
+        0 0 40px rgba(216,181,106,0.35),
+        0 0 120px rgba(138,43,226,0.25);
+
+    animation:
+        spin 1.2s linear infinite,
+        pulse 2.2s ease-in-out infinite,
+        portalExpand 1.8s ease forwards;
+}
+
+/* TEKST DIMENZIJE */
+.portal-text{
+    margin-top: 25px;
+    color: #f5e6c8;
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0.85;
+
+    animation: fadeText 1.5s ease-in-out infinite;
+}
+
+/* ROTACIJA */
+@keyframes spin{
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* DIHANJE ENERGIJE */
+@keyframes pulse{
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.08); }
+}
+
+/* DIMENZIJSKI PREHOD */
+@keyframes portalExpand{
+    0%{
+        transform: scale(0.6);
+        opacity: 0;
+        filter: blur(0px);
+    }
+    40%{
+        transform: scale(1);
+        opacity: 1;
+    }
+    80%{
+        transform: scale(1.4);
+        filter: blur(2px);
+    }
+    100%{
+        transform: scale(2);
+        opacity: 0;
+        filter: blur(10px);
+    }
+}
+
+/* TEKST Utrip */
+@keyframes fadeText{
+    0%,100% { opacity: 0.4; }
+    50%     { opacity: 1; }
 }

@@ -1,0 +1,557 @@
+/* ===================================
+   OSEBNA KODA ČASA™
+   LUXURY EDITION
+=================================== */
+
+:root{
+
+    --bg:#0b0b0b;
+    --bg-soft:#141414;
+
+    --gold:#d8b56a;
+    --gold-light:#f1d9a0;
+
+    --text:#f5f5f5;
+    --text-soft:#cfcfcf;
+
+    --card:rgba(255,255,255,0.06);
+
+    --border:rgba(255,255,255,0.12);
+
+    --shadow:
+    0 20px 60px rgba(0,0,0,.45);
+
+    --radius:28px;
+}
+
+
+/* =====================
+   RESET
+===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    line-height:1.7;
+
+    overflow-x:hidden;
+}
+
+
+/* =====================
+   TYPOGRAPHY
+===================== */
+
+h1,h2,h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:500;
+
+    letter-spacing:.5px;
+}
+
+h1{
+    font-size:clamp(3rem,8vw,6rem);
+}
+
+h2{
+    font-size:clamp(2rem,5vw,3.5rem);
+    margin-bottom:25px;
+}
+
+h3{
+    font-size:2rem;
+}
+
+p{
+    color:var(--text-soft);
+}
+
+.container{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+
+/* =====================
+   HERO
+===================== */
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    background-image:
+    linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.75)
+    ),
+    url("images/Belize-SantaRita-piramide.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+}
+
+.hero-content{
+
+    width:min(900px,90%);
+
+    z-index:5;
+}
+
+.eyebrow{
+
+    display:inline-block;
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:.8rem;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+
+    margin-bottom:30px;
+
+    color:white;
+}
+
+.hero-text{
+
+    max-width:760px;
+
+    margin:auto;
+
+    font-size:1.15rem;
+
+    color:#ececec;
+}
+
+.hero-button{
+
+    display:inline-block;
+
+    margin-top:40px;
+
+    padding:18px 42px;
+
+    border-radius:100px;
+
+    text-decoration:none;
+
+    color:#111;
+
+    font-weight:600;
+
+    background:linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold-light)
+    );
+
+    transition:.35s;
+}
+
+.hero-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 15px 40px rgba(216,181,106,.35);
+}
+
+
+/* =====================
+   SECTIONS
+===================== */
+
+section{
+
+    padding:120px 0;
+}
+
+.intro{
+
+    background:#111;
+}
+
+.intro p{
+
+    max-width:850px;
+
+    margin-bottom:20px;
+}
+
+
+/* =====================
+   CALCULATOR
+===================== */
+
+.calculator-section{
+
+    background:linear-gradient(
+    180deg,
+    #111,
+    #0b0b0b
+    );
+}
+
+.calculator-card{
+
+    width:min(700px,90%);
+
+    margin:auto;
+
+    background:var(--card);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:50px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+}
+
+.calculator-card h2{
+
+    color:white;
+}
+
+.subtitle{
+
+    margin-bottom:35px;
+}
+
+.calculator-card input{
+
+    width:100%;
+
+    margin-bottom:18px;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+
+    font-size:1rem;
+}
+
+.calculator-card input:focus{
+
+    outline:none;
+
+    border-color:var(--gold);
+}
+
+.calculator-card button{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    background:linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold-light)
+    );
+
+    color:#111;
+
+    transition:.35s;
+}
+
+.calculator-card button:hover{
+
+    transform:translateY(-2px);
+}
+
+.gdpr{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    margin-top:15px;
+
+    color:#cfcfcf;
+
+    text-align:left;
+
+    font-size:.9rem;
+}
+
+.gdpr input{
+
+    width:auto;
+
+    margin-top:5px;
+}
+
+
+/* =====================
+   RESULT
+===================== */
+
+.result-section{
+
+    padding-top:80px;
+
+    padding-bottom:80px;
+}
+
+#result{
+
+    width:min(900px,90%);
+
+    margin:auto;
+
+    display:none;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:60px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+}
+
+#result.show{
+
+    display:block;
+}
+
+.kin-number{
+
+    font-size:2rem;
+
+    color:var(--gold);
+
+    margin:25px 0;
+}
+
+.frequency{
+
+    font-size:1.2rem;
+
+    margin:25px 0;
+}
+
+.number-img{
+
+    width:120px;
+
+    margin:25px auto;
+
+    display:block;
+}
+
+.sign-img{
+
+    width:180px;
+
+    margin:35px auto;
+
+    display:block;
+}
+
+
+/* =====================
+   BOOK SECTION
+===================== */
+
+.book-section{
+
+    background:#111;
+}
+
+.book-section ul{
+
+    margin-top:25px;
+
+    margin-bottom:35px;
+
+    list-style:none;
+}
+
+.book-section li{
+
+    margin-bottom:12px;
+
+    color:#ddd;
+}
+
+.gold-button{
+
+    display:inline-block;
+
+    padding:18px 36px;
+
+    border-radius:100px;
+
+    text-decoration:none;
+
+    background:linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold-light)
+    );
+
+    color:#111;
+
+    font-weight:600;
+}
+
+
+/* =====================
+   AUTHOR
+===================== */
+
+.author{
+
+    text-align:center;
+}
+
+.author p{
+
+    max-width:800px;
+
+    margin:auto;
+}
+
+
+/* =====================
+   CTA
+===================== */
+
+.final-cta{
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+    180deg,
+    #0b0b0b,
+    #141414
+    );
+}
+
+.final-cta h2{
+
+    color:var(--gold);
+
+    margin-bottom:10px;
+}
+
+.final-cta h3{
+
+    color:white;
+
+    margin-bottom:30px;
+}
+
+
+/* =====================
+   FOOTER
+===================== */
+
+footer{
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#888;
+
+    font-size:.9rem;
+}
+
+
+/* =====================
+   MOBILE
+===================== */
+
+@media(max-width:768px){
+
+    section{
+        padding:80px 0;
+    }
+
+    .calculator-card{
+        padding:35px 25px;
+    }
+
+    #result{
+        padding:35px 25px;
+    }
+
+    .sign-img{
+        width:140px;
+    }
+
+    .number-img{
+        width:90px;
+    }
+}

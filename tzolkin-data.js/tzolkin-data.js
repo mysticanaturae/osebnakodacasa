@@ -426,7 +426,7 @@ Tvoja energija nosi odgovor.
 
 Ko zaupaš svoji življenjski sili, se začneš spominjati svoje resnične moči.
 
-✨ Celotna Osebna Koda Časa™ razkrije, kako se ta energija izraža v tvoji življenjski zgodbi.`
+✨ Celotna Osebna Koda Časa™ razkrije, kako se ta energija izraža v tvoji življenjski zgodbi.`,
 
 `Cimi (Smrt) 💀
 

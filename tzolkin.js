@@ -3,194 +3,192 @@ OSEBNA KODA ČASA™
 CORE ENGINE
 ========================================== */
 
-function calculateTzolkinKin(dateInput){
+function calculateTzolkinKin(dateInput) {
 
-```
-const dateParts = dateInput.split("-");
+    const dateParts = dateInput.split("-");
 
-const date = new Date(Date.UTC(
-    parseInt(dateParts[0]),
-    parseInt(dateParts[1]) - 1,
-    parseInt(dateParts[2])
-));
+    const date = new Date(Date.UTC(
+        parseInt(dateParts[0]),
+        parseInt(dateParts[1]) - 1,
+        parseInt(dateParts[2])
+    ));
 
-const refDate = new Date(Date.UTC(1800,0,1));
+    const refDate = new Date(Date.UTC(1800, 0, 1));
+    const refKin = 114;
 
-const refKin = 114;
+    const msPerDay = 1000 * 60 * 60 * 24;
 
-const msPerDay = 1000 * 60 * 60 * 24;
+    const daysSince =
+        Math.floor((date - refDate) / msPerDay);
 
-const daysSince =
-    Math.floor((date - refDate) / msPerDay);
+    const kin =
+        ((refKin - 1 + daysSince) % 260 + 260) % 260 + 1;
 
-const kin =
-    ((refKin - 1 + daysSince) % 260 + 260) % 260 + 1;
-
-return kin;
-```
-
+    return kin;
 }
 
-function calculateSoulFrequency(){
+function calculateSoulFrequency() {
 
-```
-const fullName =
-    document.getElementById("fullName").value.trim();
+    const fullName =
+        document.getElementById("fullName").value.trim();
 
-const birthDate =
-    document.getElementById("birthDate").value;
+    const birthDate =
+        document.getElementById("birthDate").value;
 
-const email =
-    document.getElementById("email").value.trim();
+    const email =
+        document.getElementById("email").value.trim();
 
-const gdpr =
-    document.getElementById("gdprConsent").checked;
+    const gdpr =
+        document.getElementById("gdprConsent").checked;
 
-const resultDiv =
-    document.getElementById("result");
+    const resultDiv =
+        document.getElementById("result");
 
-if(
-    !fullName ||
-    !birthDate ||
-    !email ||
-    !gdpr
-){
-    alert(
-        "Prosim izpolni vsa polja in potrdi soglasje."
-    );
-    return;
-}
+    if (
+        !fullName ||
+        !birthDate ||
+        !email ||
+        !gdpr
+    ) {
+        alert(
+            "Prosim izpolni vsa polja in potrdi soglasje."
+        );
+        return;
+    }
 
-saveEmail(email);
+    saveEmail(email);
 
-const kin =
-    calculateTzolkinKin(birthDate);
+    const kin =
+        calculateTzolkinKin(birthDate);
 
-const tone =
-    ((kin - 1) % 13) + 1;
+    const tone =
+        ((kin - 1) % 13) + 1;
 
-const sign =
-    ((kin - 1) % 20) + 1;
+    const sign =
+        ((kin - 1) % 20) + 1;
 
-const toneText =
-    tzolkinNumbers[tone - 1];
+    const toneText =
+        tzolkinNumbers[tone - 1];
 
-const toneImg =
-    tzolkinNumberImages[tone - 1];
+    const toneImg =
+        tzolkinNumberImages[tone - 1];
 
-const signName =
-    tzolkinSigns[sign - 1];
+    const signName =
+        tzolkinSigns[sign - 1];
 
-const signImg =
-    tzolkinSignImages[sign - 1];
+    const signImg =
+        tzolkinSignImages[sign - 1];
 
-const signDescription =
-    tzolkinSignDescriptions[sign - 1];
+    const signDescription =
+        tzolkinSignDescriptions[sign - 1];
 
-resultDiv.innerHTML = `
-<div class="reading-card">
+    resultDiv.innerHTML = `
+    <div class="reading-card">
 
-    <div class="reading-header">
-        <span class="reading-label">OSEBNA KODA ČASA™</span>
-        <h2>${fullName}</h2>
-    </div>
+        <div class="reading-header">
+            <span class="reading-label">
+                OSEBNA KODA ČASA™
+            </span>
 
-    <div class="kin-display">
-        KIN ${kin}
-    </div>
+            <h2>${fullName}</h2>
+        </div>
 
-    <img src="${toneImg}" class="number-img">
-    <p class="frequency">${toneText}</p>
+        <div class="kin-display">
+            KIN ${kin}
+        </div>
 
-    <img src="${signImg}" class="sign-img">
+        <img src="${toneImg}" class="number-img" alt="Ton">
 
-    <h3>${signText}</h3>
-
-    <p class="reading-text">
-        ${signDesc}
-    </p>
-
-    <div class="upgrade-box">
-        <h4>Želiš celotno osebno branje?</h4>
-
-        <p>
-        Odkrij svojo Kodo Časa,
-        Val Časa,
-        Drevo Življenja,
-        Dneve Požiga,
-        Pot Pernate Kače
-        in osebno knjigo,
-        ustvarjeno samo zate.
+        <p class="frequency">
+            ${toneText}
         </p>
 
-        <a href="https://www.mystica-naturae.com"
-           target="_blank"
-           class="upgrade-btn">
-           Odkleni celotno branje
-        </a>
+        <img src="${signImg}" class="sign-img" alt="${signName}">
+
+        <h3>${signName}</h3>
+
+        <p class="reading-text">
+            ${signDescription}
+        </p>
+
+        <div class="upgrade-box">
+
+            <h4>
+                Želiš celotno osebno branje?
+            </h4>
+
+            <p>
+            Odkrij svojo Kodo Časa,
+            Val Časa,
+            Drevo Življenja,
+            Dneve Požiga,
+            Pot Pernate Kače
+            in osebno knjigo,
+            ustvarjeno samo zate.
+            </p>
+
+            <a
+                href="https://www.mystica-naturae.com"
+                target="_blank"
+                class="upgrade-btn">
+
+                Odkleni celotno branje
+
+            </a>
+
+        </div>
 
     </div>
+    `;
 
-</div>
-`;
+    resultDiv.classList.add("show");
 
-resultDiv.classList.add("show");
-
-resultDiv.scrollIntoView({
-    behavior:"smooth"
-});
-```
-
+    resultDiv.scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-function saveEmail(email){
+function saveEmail(email) {
 
-```
-console.log(
-    "Email captured:",
-    email
-);
-```
-
+    console.log(
+        "Email captured:",
+        email
+    );
 }
 
 /* HERO PARALLAX */
 
 window.addEventListener("scroll", () => {
 
-```
-const hero =
-    document.querySelector(".hero");
+    const hero =
+        document.querySelector(".hero");
 
-if(!hero) return;
+    if (!hero) return;
 
-const offset =
-    window.pageYOffset;
+    const offset =
+        window.pageYOffset;
 
-hero.style.backgroundPositionY =
-    offset * 0.4 + "px";
-```
+    hero.style.backgroundPositionY =
+        offset * 0.4 + "px";
 
 });
 
 /* SERVICE WORKER */
 
-if("serviceWorker" in navigator){
+if ("serviceWorker" in navigator) {
 
-```
-window.addEventListener("load", () => {
+    window.addEventListener("load", () => {
 
-    navigator.serviceWorker
-        .register("sw.js")
-        .then(() => {
+        navigator.serviceWorker
+            .register("sw.js")
+            .then(() => {
 
-            console.log(
-                "Service Worker aktiviran"
-            );
+                console.log(
+                    "Service Worker aktiviran"
+                );
 
-        });
+            });
 
-});
-```
+    });
 
 }

@@ -810,3 +810,26 @@ footer{
         filter:blur(12px);
     }
 }
+
+.personal-code {
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+
+    letter-spacing:3px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ffffff,
+    #7ddcff
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}

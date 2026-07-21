@@ -75,6 +75,13 @@ function calculateSoulFrequency(){
 
                 <div class="kin-display">KIN ${kin}</div>
 
+<div class="personal-code">
+    ${tone} ${signName}
+</div>
+
+<img src="${toneImg}" class="number-img">
+<p class="frequency">${toneText}</p>
+
                 <img src="${toneImg}" class="number-img">
                 <p class="frequency">${toneText}</p>
 

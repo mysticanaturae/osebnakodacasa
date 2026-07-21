@@ -143,6 +143,7 @@ function calculateSoulFrequency(){
         resultDiv.innerHTML = `
 
 
+
         <div class="reading-card">
 
 
@@ -169,11 +170,13 @@ function calculateSoulFrequency(){
 
 
 
+
             <div class="kin-display">
 
             KIN ${kin}
 
             </div>
+
 
 
 
@@ -199,9 +202,13 @@ function calculateSoulFrequency(){
 
 
 
+
             <img 
             src="${toneImg}" 
             class="number-img">
+
+
+
 
 
 
@@ -227,6 +234,7 @@ function calculateSoulFrequency(){
 
 
 
+
             <h3>
 
             ${signName}
@@ -236,11 +244,26 @@ function calculateSoulFrequency(){
 
 
 
+
             <p class="reading-text">
 
             ${signDescription}
 
             </p>
+
+
+
+            <br>
+
+
+            <a
+            href="https://app.blinkita.com/dashboard.html"
+            class="hero-button">
+
+            🌌 Odpri svoj Blinkita portal
+
+            </a>
+
 
 
 
